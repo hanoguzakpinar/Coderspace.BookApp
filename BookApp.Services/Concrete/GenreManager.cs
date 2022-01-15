@@ -24,7 +24,7 @@ namespace BookApp.Services.Concrete
 
         public async Task<IDataResult<GenreDto>> GetAsync(int genreId)
         {
-            var genre = await _unitOfWork.Genres.GetAsync(g => g.Id == genreId);
+            var genre = await _unitOfWork.Genres.GetAsync(g => g.Id == genreId, g => g.Books);
             if (genre is not null)
             {
                 return new DataResult<GenreDto>(ResultStatus.Success, new GenreDto()

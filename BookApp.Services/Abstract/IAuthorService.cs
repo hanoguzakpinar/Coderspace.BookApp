@@ -13,7 +13,7 @@ namespace BookApp.Services.Abstract
         Task<IDataResult<AuthorDto>> GetAsync(int authorId);
         Task<IDataResult<AuthorUpdateDto>> GetAuthorUpdateDtoAsync(int authorId);
         Task<IDataResult<AuthorListDto>> GetAllAsync();
-        Task<IResult> AddAsync(AuthorAddDto authorAddDto, int userId);
+        Task<IResult> AddAsync(AuthorAddDto authorAddDto);
         Task<IResult> UpdateAsync(AuthorUpdateDto authorUpdateDto);
         Task<IResult> DeleteAsync(int authorId);
         Task<IDataResult<int>> CountAsync();
