@@ -1,0 +1,25 @@
+﻿@model BookListDto
+
+<table class="table table-hover table-bordered table-sm">
+    <thead>
+        <tr>
+            <td>İsim</td>
+            <td>Sayfa Sayısı</td>
+            <td>Yayın Tarihi</td>
+            <td>Kategori</td>
+            <td>Yazar</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.PageCount</td>
+                <td>@book.PublishDate.ToShortDateString()</td>
+                <td>@book.Genre.Name</td>
+                <td>@book.Author.Name @book.Author.Surname</td>
+            </tr>
+        }
+    </tbody>
+</table>
