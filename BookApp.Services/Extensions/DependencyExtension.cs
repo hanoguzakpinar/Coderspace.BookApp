@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using BookApp.Data.Abstract;
 using BookApp.Data.Concrete;
 using BookApp.Data.Concrete.Contexts;
+using BookApp.Services.Abstract;
+using BookApp.Services.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +24,9 @@ namespace BookApp.Services.Extensions
             });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAuthorService, AuthorManager>();
+            services.AddScoped<IGenreService, GenreManager>();
+            services.AddScoped<IBookService, BookManager>();
         }
     }
 }

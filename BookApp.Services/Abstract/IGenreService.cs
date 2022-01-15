@@ -13,7 +13,7 @@ namespace BookApp.Services.Abstract
         Task<IDataResult<GenreDto>> GetAsync(int genreId);
         Task<IDataResult<GenreUpdateDto>> GetGenreUpdateDtoAsync(int genreId);
         Task<IDataResult<GenreListDto>> GetAllAsync();
-        Task<IResult> AddAsync(GenreAddDto genreAddDto, int userId);
+        Task<IResult> AddAsync(GenreAddDto genreAddDto);
         Task<IResult> UpdateAsync(GenreUpdateDto genreUpdateDto);
         Task<IResult> DeleteAsync(int genreId);
         Task<IDataResult<int>> CountAsync();
