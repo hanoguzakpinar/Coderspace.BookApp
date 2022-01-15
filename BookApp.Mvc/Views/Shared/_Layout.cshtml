@@ -4,10 +4,45 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="https://i.pinimg.com/originals/db/30/3b/db303b576b4e78e6c0855e6fe5e46642.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                    Book App
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index" asp-area="Admin">Index</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index" asp-area="">Index</a>
+                        }
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <a class="nav-link" asp-controller="Auth" asp-action="Login" asp-area="">Giriş Yap</a>
+                            <a class="nav-link" asp-controller="Auth" asp-action="Register" asp-area="">Kayıt Ol</a>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a class="nav-link" asp-controller="Auth" asp-action="Logout" asp-area="">Çıkış Yap</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container mt-4">
+            @RenderBody()
+        </div>
     </div>
 </body>
 </html>
