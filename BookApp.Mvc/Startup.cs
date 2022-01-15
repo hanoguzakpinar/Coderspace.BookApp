@@ -28,6 +28,23 @@ namespace BookApp.Mvc
             services.AddControllersWithViews();
             services.AddSession();
             services.AddAutoMapper(typeof(AuthorProfile), typeof(GenreProfile), typeof(BookProfile));
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = new PathString("/Auth/Login");
+                options.LogoutPath = new PathString("/Auth/Logout");
+                options.Cookie = new CookieBuilder
+                {
+                    Name = "BookApp",
+                    HttpOnly = true,
+                    SameSite = SameSiteMode.Strict,
+                    SecurePolicy = CookieSecurePolicy.SameAsRequest,
+
+                };
+                options.SlidingExpiration = true;
+                options.ExpireTimeSpan = System.TimeSpan.FromDays(7);
+                options.AccessDeniedPath = new PathString("/Auth/AccessDenied");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
