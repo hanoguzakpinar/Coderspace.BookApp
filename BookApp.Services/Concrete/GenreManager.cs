@@ -37,11 +37,6 @@ namespace BookApp.Services.Concrete
             return new DataResult<GenreDto>(ResultStatus.Error, "Tür bulunamadı.", null);
         }
 
-        public async Task<IDataResult<GenreUpdateDto>> GetGenreUpdateDtoAsync(int genreId)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IDataResult<GenreListDto>> GetAllAsync()
         {
             var genres = await _unitOfWork.Genres.GetAllAsync(null, g => g.Books);

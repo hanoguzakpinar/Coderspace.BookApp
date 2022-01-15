@@ -11,7 +11,6 @@ namespace BookApp.Services.Abstract
     public interface IAuthorService
     {
         Task<IDataResult<AuthorDto>> GetAsync(int authorId);
-        Task<IDataResult<AuthorUpdateDto>> GetAuthorUpdateDtoAsync(int authorId);
         Task<IDataResult<AuthorListDto>> GetAllAsync();
         Task<IResult> AddAsync(AuthorAddDto authorAddDto);
         Task<IResult> UpdateAsync(AuthorUpdateDto authorUpdateDto);

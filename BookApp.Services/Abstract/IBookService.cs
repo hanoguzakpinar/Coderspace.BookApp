@@ -11,10 +11,9 @@ namespace BookApp.Services.Abstract
     public interface IBookService
     {
         Task<IDataResult<BookDto>> GetAsync(int bookId);
-        Task<IDataResult<BookUpdateDto>> GetBookUpdateDtoAsync(int bookId);
         Task<IDataResult<BookListDto>> GetAllAsync();
         Task<IDataResult<BookListDto>> GetAllByAuthorAsync(int authorId);
-        Task<IResult> AddAsync(BookAddDto bookAddDto, int userId);
+        Task<IResult> AddAsync(BookAddDto bookAddDto);
         Task<IResult> UpdateAsync(BookUpdateDto bookUpdateDto);
         Task<IResult> DeleteAsync(int bookId);
         Task<IDataResult<int>> CountAsync();

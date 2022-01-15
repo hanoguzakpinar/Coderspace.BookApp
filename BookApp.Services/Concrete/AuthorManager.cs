@@ -36,11 +36,6 @@ namespace BookApp.Services.Concrete
             return new DataResult<AuthorDto>(ResultStatus.Error, "Yazar bulunamadı.", null);
         }
 
-        public async Task<IDataResult<AuthorUpdateDto>> GetAuthorUpdateDtoAsync(int authorId)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IDataResult<AuthorListDto>> GetAllAsync()
         {
             var authors = await _unitOfWork.Authors.GetAllAsync(null, g => g.Books);
