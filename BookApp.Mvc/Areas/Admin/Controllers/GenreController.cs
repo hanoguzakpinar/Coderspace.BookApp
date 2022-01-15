@@ -48,5 +48,19 @@ namespace BookApp.Mvc.Areas.Admin.Controllers
 
             return View(dto);
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _genreService.DeleteAsync(id);
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return RedirectToAction("Index", "Genre");
+            }
+            else
+            {
+                // refactoring
+                return RedirectToAction("Index", "Genre");
+            }
+        }
     }
 }

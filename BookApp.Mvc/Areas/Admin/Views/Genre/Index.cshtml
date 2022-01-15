@@ -21,6 +21,10 @@
                         <div class="me-1 d-inline">@book.Title &nbsp;&nbsp;</div>
                     }
                 </td>
+                <td>
+                    <a asp-controller="Genre" asp-action="Update" asp-route-id="@genre.Id" class="btn btn-sm btn-warning">Güncelle</a>
+                    <a asp-controller="Genre" asp-action="Delete" asp-route-id="@genre.Id" class="btn btn-sm btn-danger">Sil</a>
+                </td>
             </tr>
         }
     </tbody>
