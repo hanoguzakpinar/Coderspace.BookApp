@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BookApp.Data.Abstract;
+using BookApp.Data.Concrete;
 using BookApp.Data.Concrete.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +20,8 @@ namespace BookApp.Services.Extensions
             {
                 opt.UseSqlServer(configuration.GetConnectionString("Local"));
             });
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }
