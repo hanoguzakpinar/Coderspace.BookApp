@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace BookApp.Mvc.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
-        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             return View();

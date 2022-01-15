@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Genre List";
+}
+@model GenreListDto
+
+<table class="table table-hover table-bordered table-sm">
+    <thead>
+        <tr>
+            <td>Tür İsim</td>
+            <td>Kitaplar</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var genre in Model.Genres)
+        {
+            <tr>
+                <td>@genre.Name</td>
+                <td>
+                    @foreach (var book in genre.Books)
+                    {
+                        <div class="me-1 d-inline">@book.Title &nbsp;&nbsp;</div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
