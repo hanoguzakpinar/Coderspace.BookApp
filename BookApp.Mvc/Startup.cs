@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookApp.Services.AutoMapperProfiles;
 using BookApp.Services.Extensions;
 using Microsoft.Extensions.Configuration;
 
@@ -25,6 +26,8 @@ namespace BookApp.Mvc
         {
             services.AddDependencies(Configuration);
             services.AddControllersWithViews();
+            services.AddSession();
+            services.AddAutoMapper(typeof(AuthorProfile), typeof(GenreProfile), typeof(BookProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
