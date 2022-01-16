@@ -2,6 +2,7 @@
 using BookApp.Entities.Dtos.GenreDtos;
 using BookApp.Services.Abstract;
 using BookApp.Shared.Results.Enums;
+using Humanizer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -61,6 +62,35 @@ namespace BookApp.Mvc.Areas.Admin.Controllers
                 // refactoring
                 return RedirectToAction("Index", "Genre");
             }
+        }
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var genre = await _genreService.GetAsync(id);
+            return View(new GenreUpdateDto()
+            {
+                Id = genre.Data.Genre.Id,
+                Name = genre.Data.Genre.Name
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(GenreUpdateDto dto)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _genreService.UpdateAsync(dto);
+                if (result.ResultStatus == ResultStatus.Success)
+                {
+                    return RedirectToAction("Index", "Genre");
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.Message);
+                }
+            }
+
+            return View(dto);
         }
     }
 }
