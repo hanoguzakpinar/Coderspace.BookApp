@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model BookListDto
+
+<table class="table table-hover table-bordered table-sm">
+    <thead>
+        <tr>
+            <td>Kitap Adı</td>
+            <td>Yazar</td>
+            <td>Tür</td>
+            <td>Yayın Tarihi</td>
+            <td>Sayfa Sayısı</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author.Name @book.Author.Surname</td>
+                <td>@book.Genre.Name</td>
+                <td>@book.PublishDate.ToShortDateString()</td>
+                <td>@book.PageCount</td>
+
+                <td>
+                    <a asp-controller="Book" asp-action="Update" asp-route-id="@book.Id" class="btn btn-sm btn-warning">Güncelle</a>
+                    <a asp-controller="Book" asp-action="Delete" asp-route-id="@book.Id" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
