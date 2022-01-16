@@ -62,5 +62,35 @@ namespace BookApp.Mvc.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Author");
             }
         }
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var author = await _authorService.GetAsync(id);
+            return View(new AuthorUpdateDto()
+            {
+                Id = author.Data.Author.Id,
+                Name = author.Data.Author.Name,
+                Surname = author.Data.Author.Surname
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(AuthorUpdateDto dto)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _authorService.UpdateAsync(dto);
+                if (result.ResultStatus == ResultStatus.Success)
+                {
+                    return RedirectToAction("Index", "Author");
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.Message);
+                }
+            }
+
+            return View(dto);
+        }
     }
 }
