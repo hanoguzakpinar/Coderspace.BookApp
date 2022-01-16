@@ -23,5 +23,10 @@ namespace BookApp.Entities.Dtos.BookDtos
         [DisplayName("Sayfa Sayısı")]
         [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
         public int PageCount { get; set; }
+
+        [DisplayName("Kapak Resmi")]
+        [MaxLength(200, ErrorMessage = "{0} {1} karakterden fazla olamaz.")]
+        [MinLength(7, ErrorMessage = "{0} {1} karakterden az olamaz.")]
+        public string ImageUrl { get; set; }
     }
 }

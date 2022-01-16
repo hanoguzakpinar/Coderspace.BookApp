@@ -21,6 +21,7 @@ namespace BookApp.Data.Concrete.Configs
             builder.Property(b => b.Title).IsRequired().HasMaxLength(100);
             builder.Property(b => b.PublishDate).IsRequired();
             builder.Property(b => b.PageCount).IsRequired();
+            builder.Property(b => b.ImageUrl).HasMaxLength(500);
 
             //TableName
             builder.ToTable("Books");
