@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
+using BookApp.Entities;
+using BookApp.Entities.Dtos.AuthDtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using BookApp.Entities;
-using BookApp.Entities.Dtos.AuthDtos;
 
 namespace BookApp.Mvc.Controllers
 {

@@ -1,14 +1,12 @@
 ﻿using AutoMapper;
 using BookApp.Data.Abstract;
+using BookApp.Entities;
 using BookApp.Entities.Dtos.BookDtos;
 using BookApp.Services.Abstract;
 using BookApp.Shared.Results.Abstract;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using BookApp.Entities;
 using BookApp.Shared.Results.Concrete;
 using BookApp.Shared.Results.Enums;
+using System.Threading.Tasks;
 
 namespace BookApp.Services.Concrete
 {

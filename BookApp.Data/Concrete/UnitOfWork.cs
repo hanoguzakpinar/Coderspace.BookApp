@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookApp.Data.Abstract;
+﻿using BookApp.Data.Abstract;
 using BookApp.Data.Concrete.Contexts;
 using BookApp.Data.Concrete.Repositories;
+using System.Threading.Tasks;
 
 namespace BookApp.Data.Concrete
 {

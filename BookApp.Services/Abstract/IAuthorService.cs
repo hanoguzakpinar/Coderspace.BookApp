@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookApp.Entities.Dtos.AuthorDtos;
+﻿using BookApp.Entities.Dtos.AuthorDtos;
 using BookApp.Shared.Results.Abstract;
+using System.Threading.Tasks;
 
 namespace BookApp.Services.Abstract
 {

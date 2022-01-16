@@ -2,7 +2,6 @@
 using BookApp.Entities.Dtos.GenreDtos;
 using BookApp.Services.Abstract;
 using BookApp.Shared.Results.Enums;
-using Humanizer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

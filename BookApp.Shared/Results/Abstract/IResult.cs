@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookApp.Shared.Results.Enums;
+﻿using BookApp.Shared.Results.Enums;
+using System;
 
 namespace BookApp.Shared.Results.Abstract
 {
