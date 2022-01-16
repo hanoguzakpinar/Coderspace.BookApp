@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookApp.Mvc.AutoMapperProfiles;
 using BookApp.Services.AutoMapperProfiles;
 using BookApp.Services.Extensions;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +28,7 @@ namespace BookApp.Mvc
             services.AddDependencies(Configuration);
             services.AddControllersWithViews();
             services.AddSession();
-            services.AddAutoMapper(typeof(AuthorProfile), typeof(GenreProfile), typeof(BookProfile));
+            services.AddAutoMapper(typeof(AuthorProfile), typeof(GenreProfile), typeof(BookProfile), typeof(BookModelProfile));
 
             services.ConfigureApplicationCookie(options =>
             {

@@ -1,0 +1,44 @@
+﻿@model BookCreateModel
+
+<div class="mx-auto col-4">
+    <form asp-controller="Book" asp-action="Create" method="post">
+        <div class="mb-3">
+            <label class="form-label" asp-for="@Model.Title"></label>
+            <input class="form-control" asp-for="@Model.Title">
+            <span asp-validation-for="@Model.Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="@Model.ImageUrl"></label>
+            <input class="form-control" asp-for="@Model.ImageUrl">
+            <span asp-validation-for="@Model.ImageUrl" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="@Model.PageCount"></label>
+            <input class="form-control" asp-for="@Model.PageCount">
+            <span asp-validation-for="@Model.PageCount" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="@Model.PublishDate"></label>
+            <input class="form-control" asp-for="@Model.PublishDate">
+            <span asp-validation-for="@Model.PublishDate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.GenreId"></label>
+            <select class="form-control" asp-for="@Model.GenreId" asp-items="@(new SelectList(Model.Genres,"Id","Name"))">
+                <option></option>
+            </select>
+            <span asp-validation-for="@Model.GenreId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="@Model.AuthorId"></label>
+            <select class="form-control" asp-for="@Model.AuthorId" asp-items="@(new SelectList(Model.Authors.Select(x=>new SelectListItem(){Value = x.Id.ToString(),Text = x.Name+" "+x.Surname}),"Value","Text"))">
+                <option></option>
+            </select>
+            <span asp-validation-for="@Model.AuthorId" class="text-danger"></span>
+        </div>
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </form>
+</div>

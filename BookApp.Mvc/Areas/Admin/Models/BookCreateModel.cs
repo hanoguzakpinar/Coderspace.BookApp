@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BookApp.Entities;
+using BookApp.Entities.Dtos.BookDtos;
 
-namespace BookApp.Entities.Dtos.BookDtos
+namespace BookApp.Mvc.Areas.Admin.Models
 {
-    public class BookAddDto
+    public class BookCreateModel
     {
+        public IList<Genre> Genres { get; set; }
+        public IList<Author> Authors { get; set; }
+
         [DisplayName("Kitap İsmi")]
         [Required(ErrorMessage = "{0} alanı boş bırakılamaz.")]
         [MaxLength(100, ErrorMessage = "{0} {1} karakterden fazla olamaz.")]
@@ -23,6 +25,7 @@ namespace BookApp.Entities.Dtos.BookDtos
 
         [DisplayName("Sayfa Sayısı")]
         [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
+        [Range(10, int.MaxValue, ErrorMessage = "{0} {1}'dan büyük olmalıdır.")]
         public int PageCount { get; set; }
 
         [DisplayName("Kapak Resmi")]
