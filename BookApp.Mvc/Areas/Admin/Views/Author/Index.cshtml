@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Author List";
+}
+@model AuthorListDto
+
+<table class="table table-hover table-bordered table-sm">
+    <thead>
+        <tr>
+            <td>Yazar İsim-Soyisim</td>
+            <td>Kitaplar</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model.Authors)
+        {
+            <tr>
+                <td>@author.Name @author.Surname</td>
+                <td>
+                    @foreach (var book in author.Books)
+                    {
+                        <div class="me-1 d-inline">@book.Title &nbsp;&nbsp;</div>
+                    }
+                </td>
+                <td>
+                    <a asp-controller="Author" asp-action="Update" asp-route-id="@author.Id" class="btn btn-sm btn-warning">Güncelle</a>
+                    <a asp-controller="Author" asp-action="Delete" asp-route-id="@author.Id" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

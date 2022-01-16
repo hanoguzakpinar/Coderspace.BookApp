@@ -30,6 +30,15 @@
                                     <li><a class="dropdown-item" aria-current="page" asp-controller="Genre" asp-action="Create" asp-area="Admin">Create Genre</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Authors
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" aria-current="page" asp-controller="Author" asp-action="Index" asp-area="Admin">Author List</a></li>
+                                    <li><a class="dropdown-item" aria-current="page" asp-controller="Author" asp-action="Create" asp-area="Admin">Create Author</a></li>
+                                </ul>
+                            </li>
                         }
                         else
                         {
