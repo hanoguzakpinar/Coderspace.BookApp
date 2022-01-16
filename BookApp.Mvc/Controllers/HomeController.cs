@@ -1,26 +1,42 @@
-﻿using BookApp.Services.Abstract;
+﻿using System.Linq;
+using BookApp.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using BookApp.Data.Concrete.Contexts;
+using BookApp.Entities.Dtos.BookDtos;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookApp.Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IGenreService _genreService;
-        private readonly IAuthorService _authorService;
         private readonly IBookService _bookService;
+        private readonly BookContext _context;
 
-        public HomeController(IGenreService genreService, IAuthorService authorService, IBookService bookService)
+        public HomeController(IBookService bookService, BookContext context)
         {
-            _genreService = genreService;
-            _authorService = authorService;
             _bookService = bookService;
+            _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var books = await _bookService.GetAllAsync();
-            return View(books.Data);
+            var books = _context.Books.AsQueryable();
+            books = books.Include(x => x.Author);
+
+            if (id != null)
+            {
+                books = books.
+                    Include(x => x.Genre).
+                    Where(x => x.Genre.Id == id);
+            }
+
+            var model = new BookListDto()
+            {
+                Books = books.ToList()
+            };
+
+            return View("Index", model);
         }
     }
 }

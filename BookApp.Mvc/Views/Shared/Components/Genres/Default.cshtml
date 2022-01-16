@@ -1,0 +1,18 @@
+﻿@model List<BookApp.Entities.Genre>
+
+<div class="row mb-3 ms-1">
+    <ul class="list-group list-group-horizontal">
+        <li style="list-style: none;">
+            <a href="/Home/Index/" class="list-group-item list-group-item-action @(ViewBag.SelectedGenre==null?"active":"")">Tüm Kitaplar</a>
+        </li>
+        @foreach (var genre in Model)
+        {
+            <li>
+                <a href="/Home/Index/@genre.Id"
+               class="list-group-item list-group-item-action @(ViewBag.SelectedGenre==genre.Id.ToString()?"active":"")">
+                    @genre.Name
+                </a>
+            </li>
+        }
+    </ul>
+</div>
