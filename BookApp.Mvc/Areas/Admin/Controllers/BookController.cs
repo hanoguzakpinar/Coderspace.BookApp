@@ -81,5 +81,50 @@ namespace BookApp.Mvc.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Book");
             }
         }
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var genres = await _genreService.GetAllAsync();
+            var authors = await _authorService.GetAllAsync();
+            var bookResult = await _bookService.GetAsync(id);
+            if (bookResult.ResultStatus == ResultStatus.Success)
+            {
+                var bookUpdateDto = _mapper.Map<BookUpdateDto>(bookResult.Data.Book);
+                var bookUpdateModel = _mapper.Map<BookUpdateModel>(bookUpdateDto);
+                bookUpdateModel.Authors = authors.Data.Authors;
+                bookUpdateModel.Genres = genres.Data.Genres;
+
+                return View(bookUpdateModel);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(BookUpdateModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //var reportUpdateDto = Mapper.Map<ReportUpdateDto>(reportUpdateViewModel);
+                var bookUpdateDto = _mapper.Map<BookUpdateDto>(model);
+                var result = await _bookService.UpdateAsync(bookUpdateDto);
+                if (result.ResultStatus == ResultStatus.Success)
+                {
+                    return RedirectToAction("Index", "Book");
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.Message);
+                }
+            }
+
+            var genres = await _genreService.GetAllAsync();
+            var authors = await _authorService.GetAllAsync();
+            model.Authors = authors.Data.Authors;
+            model.Genres = genres.Data.Genres;
+            return View(model);
+        }
     }
 }

@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using BookApp.Entities;
 
-namespace BookApp.Entities.Dtos.BookDtos
+namespace BookApp.Mvc.Areas.Admin.Models
 {
-    public class BookUpdateDto
+    public class BookUpdateModel
     {
+        public IList<Genre> Genres { get; set; }
+        public IList<Author> Authors { get; set; }
+
         [Required]
         public int Id { get; set; }
 
@@ -22,6 +27,7 @@ namespace BookApp.Entities.Dtos.BookDtos
 
         [DisplayName("Sayfa Sayısı")]
         [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
+        [Range(10, int.MaxValue, ErrorMessage = "{0} {1}'dan büyük olmalıdır.")]
         public int PageCount { get; set; }
 
         [DisplayName("Kapak Resmi")]

@@ -10,7 +10,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand">
                     Book App
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,12 +55,12 @@
                         }
                         @if (!User.Identity.IsAuthenticated)
                         {
-                            <a class="nav-link" asp-controller="Auth" asp-action="Login" asp-area="">Giriş Yap</a>
-                            <a class="nav-link" asp-controller="Auth" asp-action="Register" asp-area="">Kayıt Ol</a>
+                            <a class="nav-link" asp-controller="Auth" asp-action="Login" asp-area="">Login</a>
+                            <a class="nav-link" asp-controller="Auth" asp-action="Register" asp-area="">Register</a>
                         }
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <a class="nav-link" asp-controller="Auth" asp-action="Logout" asp-area="">Çıkış Yap</a>
+                            <a class="nav-link" asp-controller="Auth" asp-action="Logout" asp-area="">Logout</a>
                         }
                     </div>
                 </div>

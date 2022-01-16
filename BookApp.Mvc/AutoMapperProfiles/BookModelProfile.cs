@@ -9,6 +9,7 @@ namespace BookApp.Mvc.AutoMapperProfiles
         public BookModelProfile()
         {
             CreateMap<BookCreateModel, BookAddDto>().ReverseMap();
+            CreateMap<BookUpdateModel, BookUpdateDto>().ReverseMap();
         }
     }
 }
