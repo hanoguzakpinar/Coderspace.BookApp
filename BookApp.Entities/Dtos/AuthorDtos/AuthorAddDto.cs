@@ -13,13 +13,13 @@ namespace BookApp.Entities.Dtos.AuthorDtos
         [DisplayName("Yazar İsim")]
         [Required(ErrorMessage = "{0} alanı boş bırakılamaz.")]
         [MaxLength(30, ErrorMessage = "{0} {1} karakterden fazla olamaz.")]
-        [MinLength(1, ErrorMessage = "{0} {1} karakterden az olamaz.")]
+        [MinLength(2, ErrorMessage = "{0} {1} karakterden az olamaz.")]
         public string Name { get; set; }
 
         [DisplayName("Yazar Soyisim")]
         [Required(ErrorMessage = "{0} alanı boş bırakılamaz.")]
         [MaxLength(30, ErrorMessage = "{0} {1} karakterden fazla olamaz.")]
-        [MinLength(1, ErrorMessage = "{0} {1} karakterden az olamaz.")]
+        [MinLength(2, ErrorMessage = "{0} {1} karakterden az olamaz.")]
         public string Surname { get; set; }
     }
 }

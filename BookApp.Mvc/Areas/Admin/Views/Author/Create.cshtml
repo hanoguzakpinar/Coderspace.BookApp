@@ -1,14 +1,19 @@
 ﻿@{
-    ViewBag.Title = "Create Genre";
+    ViewBag.Title = "Create Author";
 }
-@model GenreAddDto
+@model AuthorAddDto
 
 <div class="mx-auto col-4">
-    <form asp-controller="Genre" asp-action="Create" method="post">
+    <form asp-controller="Author" asp-action="Create" method="post">
         <div class="mb-3">
             <label class="form-label" asp-for="Name"></label>
             <input class="form-control" asp-for="Name">
             <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="Surname"></label>
+            <input class="form-control" asp-for="Surname">
+            <span asp-validation-for="Surname" class="text-danger"></span>
         </div>
         <div class="text-end">
             <button type="submit" class="btn btn-primary">Kaydet</button>
