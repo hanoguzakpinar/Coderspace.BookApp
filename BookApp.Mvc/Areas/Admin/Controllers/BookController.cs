@@ -42,7 +42,6 @@ namespace BookApp.Mvc.Areas.Admin.Controllers
                 Authors = authors.Data.Authors
             });
         }
-
         [HttpPost]
         public async Task<IActionResult> Create(BookCreateModel model)
         {
@@ -67,6 +66,20 @@ namespace BookApp.Mvc.Areas.Admin.Controllers
                 Genres = genres.Data.Genres,
                 Authors = authors.Data.Authors
             });
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _bookService.DeleteAsync(id);
+            if (result.ResultStatus == ResultStatus.Success)
+            {
+                return RedirectToAction("Index", "Book");
+            }
+            else
+            {
+                // refactoring
+                return RedirectToAction("Index", "Book");
+            }
         }
     }
 }
